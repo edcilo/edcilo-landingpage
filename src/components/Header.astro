@@ -1,0 +1,68 @@
+---
+import Nav from "@components/Nav";
+
+const logo_light = "https://storage.edcilo.com/edcilo-logo-clear.svg";
+const logo_dark = "https://storage.edcilo.com/edcilo-logo-dark.svg";
+
+const items = [
+  { id: "home", url: "#home", label: "Home" },
+  { id: "blog", url: "#blog", label: "Blog" },
+  { id: "about", url: "#about", label: "About" },
+  { id: "services", url: "#services", label: "Services" },
+  { id: "portfolio", url: "#portfolio", label: "Portfolio" },
+];
+---
+
+<header>
+    <main class="container">
+        <div class="menu-grid">
+            <div class="menu-container">
+                <Nav items={items} client:load />
+            </div>
+            <div class="logo-container">
+                <a href="/">
+                    <picture>
+                        <source srcset={logo_light} media="(prefers-color-scheme: dark)">
+                        <img src={logo_dark} width="80px" height="25px">
+                    </picture>
+                </a>
+            </div>
+            <div>&nbsp;</div>
+        </div>
+    </main>
+</header>
+
+<style lang="scss">
+    body > header {
+        padding: 0;
+        position: fixed;
+
+        .menu-grid {
+            display: flex;
+            justify-content: space-between;
+
+            div {
+                width: 33.333%;
+            }
+        }
+
+        .menu-container {
+            padding: 0.4rem 0;
+        }
+
+        .logo-container {
+            padding: 0.4rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            a {
+                line-height: 0;
+            }
+
+            picture {
+                display: block;
+            }
+        }
+    }
+</style>
